@@ -1,0 +1,137 @@
+// Variables for colors matching the image
+$bg-page: #e0e0e0;
+$bg-black: #000;
+$bg-yellow: #dba111;
+$bg-green: #00a651;
+$bg-purple: #662d91;
+$bg-blue: #0072bc;
+$bg-red: #a80000;
+$text-color: #fff;
+
+// Reset
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: $bg-page;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+// Main Layout Container
+.container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; // The grey lines between major sections
+}
+
+// Common styling for blocks to center text
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $text-color;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+// Header and Nav
+header, nav {
+    @extend %flex-center;
+    background-color: $bg-black;
+    height: 60px;
+}
+
+// Content Wrapper (Aside + Main)
+.content-wrapper {
+    display: flex;
+    gap: 10px;
+    height: 600px; // Fixed height to match the tall look
+}
+
+// Sidebar
+aside {
+    @extend %flex-center;
+    background-color: $bg-black;
+    flex: 0 0 30%; // Takes 30% width
+}
+
+// Main Area
+main {
+    @extend %flex-center;
+    background-color: $bg-black;
+    flex: 1; // Takes remaining space
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+
+    .main-label {
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
+}
+
+// The Article (Yellow Box)
+article {
+    background-color: $bg-yellow;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    align-items: center;
+
+    // The Article Label
+    & > span.label {
+        color: $bg-black; // Black text on yellow looks better, or white per image
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+
+    // Common style for inner blocks
+    figure, p, summary, section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $bg-black; // Text color for inner blocks
+        font-weight: bold;
+        border: none;
+    }
+
+    // Specific Inner Block Colors
+    figure {
+        background-color: $bg-green;
+        height: 60px;
+        color: $text-color;
+    }
+
+    p {
+        background-color: $bg-purple;
+        height: 50px;
+        color: $text-color;
+    }
+
+    summary {
+        background-color: $bg-blue;
+        height: 50px;
+        color: $text-color;
+    }
+
+    // The Red Section box at the bottom
+    section {
+        background-color: $bg-red;
+        height: 60px;
+        color: $text-color;
+        margin-top: auto; // Pushes this to the bottom of the yellow box
+    }
+}
